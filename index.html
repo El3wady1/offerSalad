@@ -175,7 +175,6 @@
             box-shadow: 0 8px 20px rgba(116, 130, 106, 0.3);
             min-width: 220px;
             justify-content: center;
-            text-decoration: none; /* تحويل الأزرار إلى روابط */
         }
         
         .branch-btn:hover {
@@ -661,100 +660,24 @@
             
             <!-- أزرار الفروع تحت الصورة مباشرة -->
             <div class="branch-buttons">
-                <!-- تم تغيير الأزرار إلى روابط تفتح خرائط جوجل مباشرة -->
-                <a href="https://maps.app.goo.gl/k2CTw4H8HhAMHUVQ6" target="_blank" class="branch-btn active" onclick="selectBranch(1, event)">
+                <button class="branch-btn active" onclick="selectBranch(1)">
                     <i class="fas fa-store-alt"></i>
                     فرع علي بن أبي طالب
-                </a>
-                <a href="https://maps.app.goo.gl/4XzPy7Vm9UaiWQ7Y9" target="_blank" class="branch-btn" onclick="selectBranch(2, event)">
+                </button>
+                <button class="branch-btn" onclick="selectBranch(2)">
                     <i class="fas fa-store-alt"></i>
                     فرع سلطانة
-                </a>
-                <a href="https://maps.app.goo.gl/tTq32SP9UNYscw2P6" target="_blank" class="branch-btn" onclick="selectBranch(3, event)">
+                </button>
+                <button class="branch-btn" onclick="selectBranch(3)">
                     <i class="fas fa-store-alt"></i>
                     فرع العزيزية
-                </a>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="container" id="branches">
-        <h1 class="main-title">
-            <i class="fas fa-map-pin"></i>
-            فروعنا في المدينة المنورة
-        </h1>
-        
-        <div class="branches-container">
-            <!-- Branches List -->
-            <div class="branches-list">
-                <!-- Branch 1 -->
-                <div class="branch-card active" data-branch="1" onclick="selectBranch(1, event)">
-                    <div class="branch-header">
-                        <h2 class="branch-name">فرع علي بن أبي طالب</h2>
-                        <div class="branch-icon">
-                            <i class="fas fa-store-alt"></i>
-                        </div>
-                    </div>
-                    <div class="branch-details">
-                        <a href="https://maps.app.goo.gl/k2CTw4H8HhAMHUVQ6" target="_blank" class="map-link">
-                            <i class="fas fa-map-marked-alt"></i>
-                            عرض الموقع على الخريطة
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Branch 2 -->
-                <div class="branch-card" data-branch="2" onclick="selectBranch(2, event)">
-                    <div class="branch-header">
-                        <h2 class="branch-name">فرع سلطانة</h2>
-                        <div class="branch-icon">
-                            <i class="fas fa-store-alt"></i>
-                        </div>
-                    </div>
-                    <div class="branch-details">
-                        <a href="https://maps.app.goo.gl/4XzPy7Vm9UaiWQ7Y9" target="_blank" class="map-link">
-                            <i class="fas fa-map-marked-alt"></i>
-                            عرض الموقع على الخريطة
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Branch 3 -->
-                <div class="branch-card" data-branch="3" onclick="selectBranch(3, event)">
-                    <div class="branch-header">
-                        <h2 class="branch-name">فرع العزيزية</h2>
-                        <div class="branch-icon">
-                            <i class="fas fa-store-alt"></i>
-                        </div>
-                    </div>
-                    <div class="branch-details">
-                        <a href="https://maps.app.goo.gl/tTq32SP9UNYscw2P6" target="_blank" class="map-link">
-                            <i class="fas fa-map-marked-alt"></i>
-                            عرض الموقع على الخريطة
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Map Container -->
-            <div class="map-container">
-                <div class="map-header">
-                    <i class="fas fa-map-location-dot"></i>
-                    <h3 id="map-title">فرع علي بن أبي طالب على الخريطة</h3>
-                </div>
-                <iframe 
-                    id="branchMap"
-                    class="map-frame fade-in"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.716899157747!2d39.572123775759014!3d24.46958787842675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbfc9a3c5c31f%3A0x8d9c3a5b8d7e1b1e!2sAli%20Ibn%20Abi%20Talib%20Rd%2C%20Al%20Madinah%20Al%20Munawwarah%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1684250000000!5m2!1sen!2s"
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </main>
-
+ 
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
@@ -762,6 +685,8 @@
                 <i class="fas fa-map-marked-alt"></i>
                 <span>فروع المدينة المنورة</span>
             </div>
+                
+         
         </div>
     </footer>
 
@@ -786,25 +711,13 @@
         };
         
         // Function to select a branch and update the map
-        function selectBranch(branchId, event = null) {
-            // إذا كان هناك حدث (نقر)، نوقف السلوك الافتراضي للروابط العلوية
-            if (event && event.target.closest('.branch-btn')) {
-                // نسمح للرابط بالعمل (فتح خرائط جوجل) ونوقف هنا
-                // سنقوم فقط بتحديث التنسيقات دون منع فتح الرابط
-                event.stopPropagation();
-            }
-            
+        function selectBranch(branchId) {
             // Update branch buttons
             const branchBtns = document.querySelectorAll('.branch-btn');
             branchBtns.forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // إضافة active للزر المناسب
-            const targetBtn = document.querySelectorAll('.branch-btn')[branchId-1];
-            if (targetBtn) {
-                targetBtn.classList.add('active');
-            }
+            document.querySelectorAll('.branch-btn')[branchId-1].classList.add('active');
             
             // Remove active class from all branch cards
             const branchCards = document.querySelectorAll('.branch-card');
@@ -814,36 +727,26 @@
             
             // Add active class to the selected branch card
             const selectedCard = document.querySelector(`[data-branch="${branchId}"]`);
-            if (selectedCard) {
-                selectedCard.classList.add('active');
-            }
+            selectedCard.classList.add('active');
             
             // Update the map with the selected branch
             const mapFrame = document.getElementById('branchMap');
             const mapTitle = document.getElementById('map-title');
             
-            if (mapFrame && mapTitle && branches[branchId]) {
-                mapFrame.src = branches[branchId].mapUrl;
-                mapTitle.textContent = `${branches[branchId].name} على الخريطة`;
-                
-                // Add fade-in animation to the map
-                mapFrame.classList.remove('fade-in');
-                void mapFrame.offsetWidth; // Trigger reflow to restart animation
-                mapFrame.classList.add('fade-in');
-                
-                // Scroll to map on mobile devices for better UX
-                if (window.innerWidth < 992) {
-                    document.querySelector('.map-container').scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }
-            }
+            mapFrame.src = branches[branchId].mapUrl;
+            mapTitle.textContent = `${branches[branchId].name} على الخريطة`;
             
-            // إذا كان النقر من العناصر الأخرى غير الروابط العلوية، نفتح الرابط
-            if (event && event.target.closest('.branch-card') && !event.target.closest('.map-link')) {
-                // نفتح خرائط جوجل في نافذة جديدة
-                window.open(branches[branchId].directLink, '_blank');
+            // Add fade-in animation to the map
+            mapFrame.classList.remove('fade-in');
+            void mapFrame.offsetWidth; // Trigger reflow to restart animation
+            mapFrame.classList.add('fade-in');
+            
+            // Scroll to map on mobile devices for better UX
+            if (window.innerWidth < 992) {
+                document.querySelector('.map-container').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
             }
         }
         
@@ -853,20 +756,27 @@
             
             // Add click event listeners to all branch cards
             document.querySelectorAll('.branch-card').forEach(card => {
-                card.addEventListener('click', function(event) {
-                    // تأكد من أن النقر ليس على رابط داخل البطاقة
-                    if (!event.target.closest('.map-link')) {
-                        const branchId = this.getAttribute('data-branch');
-                        selectBranch(branchId, event);
-                    }
+                card.addEventListener('click', function() {
+                    const branchId = this.getAttribute('data-branch');
+                    selectBranch(branchId);
                 });
             });
             
-            // Add event listeners to branch buttons (الأزرار العلوية)
-            document.querySelectorAll('.branch-btn').forEach((btn, index) => {
-                btn.addEventListener('click', function(event) {
-                    // نمرر الحدث إلى selectBranch لتحديث التنسيقات
-                    selectBranch(index + 1, event);
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
