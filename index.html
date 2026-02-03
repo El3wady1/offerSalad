@@ -103,53 +103,70 @@
             margin-top: 5px;
         }
         
-        /* Full Image Offer Section - Portait/Long Image */
-        .full-image-offer {
-            margin: 2.5rem auto;
-            max-width: 1100px;
+        /* Main Content - Order Button Added */
+        .main-title {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 2.2rem;
             position: relative;
+            font-weight: 700;
         }
         
-        .image-container {
-            width: 100%;
-            height: 700px; /* ارتفاع أكبر للصورة الطويلة */
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(116, 130, 106, 0.25);
-            position: relative;
-        }
-        
-        .offer-image {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .offer-img {
-            width: 100%;
-            height: 100%;
-            object-fit: fill;
-            object-position: center top; /* التركيز على الجزء العلوي للصورة الطويلة */
+        .main-title:after {
+            content: '';
             display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 20px auto;
+            border-radius: 2px;
         }
         
-        .offer-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                rgba(116, 130, 106, 0.05), 
-                rgba(116, 130, 106, 0.15),
-                rgba(116, 130, 106, 0.25)
-            );
+        .main-title i {
+            color: var(--accent-color);
+            margin-left: 15px;
         }
         
-        /* Branch Buttons Section */
+        /* Order Now Button */
+        .order-now-section {
+            text-align: center;
+            margin: 2rem auto 3rem;
+        }
+        
+        .order-now-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #e6b400 100%);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 1.5rem 3.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(237, 190, 44, 0.35);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            min-width: 300px;
+        }
+        
+        .order-now-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(237, 190, 44, 0.45);
+            background: linear-gradient(135deg, #e6b400 0%, var(--accent-color) 100%);
+        }
+        
+        .order-now-btn i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        /* Branch Buttons Section - Moved Up */
         .branch-buttons {
-            margin-top: -50px;
+            margin: 2rem auto 4rem;
             position: relative;
             z-index: 10;
             display: flex;
@@ -196,31 +213,6 @@
         
         .branch-btn.active i {
             color: var(--primary-color);
-        }
-        
-        /* Main Content */
-        .main-title {
-            text-align: center;
-            margin: 5rem 0 3rem;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            position: relative;
-            font-weight: 700;
-        }
-        
-        .main-title:after {
-            content: '';
-            display: block;
-            width: 120px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-        
-        .main-title i {
-            color: var(--accent-color);
-            margin-left: 15px;
         }
         
         /* Branches Section */
@@ -517,16 +509,9 @@
             animation: fadeIn 0.5s ease;
         }
         
-        /* Responsive adjustments for portrait image */
-        @media (max-width: 1200px) {
-            .image-container {
-                height: 600px;
-            }
-        }
-        
+        /* Responsive adjustments */
         @media (max-width: 992px) {
             .branch-buttons {
-                margin-top: -30px;
                 gap: 15px;
             }
             
@@ -536,8 +521,10 @@
                 font-size: 1.1rem;
             }
             
-            .image-container {
-                height: 500px;
+            .order-now-btn {
+                font-size: 1.3rem;
+                padding: 1.2rem 2.5rem;
+                min-width: 260px;
             }
         }
         
@@ -551,13 +538,7 @@
                 margin-bottom: 15px;
             }
             
-            .image-container {
-                height: 400px;
-                border-radius: 15px;
-            }
-            
             .branch-buttons {
-                margin-top: -20px;
                 flex-direction: column;
                 align-items: center;
             }
@@ -569,7 +550,17 @@
             
             .main-title {
                 font-size: 1.9rem;
-                margin: 4rem 0 2.5rem;
+                margin: 2.5rem 0 1.5rem;
+            }
+            
+            .order-now-section {
+                margin: 1.5rem auto 2.5rem;
+            }
+            
+            .order-now-btn {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                min-width: 240px;
             }
             
             .branch-name {
@@ -588,12 +579,8 @@
         }
         
         @media (max-width: 576px) {
-            .image-container {
-                height: 350px;
-            }
-            
             .branch-buttons {
-                margin-top: -15px;
+                margin: 1.5rem auto 3rem;
             }
             
             .branches-list {
@@ -610,13 +597,13 @@
             
             .main-title {
                 font-size: 1.7rem;
-                margin: 3rem 0 2rem;
+                margin: 2rem 0 1rem;
             }
-        }
-        
-        @media (max-width: 400px) {
-            .image-container {
-                height: 300px;
+            
+            .order-now-btn {
+                font-size: 1.1rem;
+                padding: 0.9rem 1.8rem;
+                min-width: 220px;
             }
         }
     </style>
@@ -638,28 +625,23 @@
         </div>
     </header>
 
-    <!-- Full Image Offer Section -->
-    <section class="full-image-offer">
+    <!-- Main Content with Order Button -->
+    <main>
         <div class="container">
-            <div class="image-container">
-                <div class="offer-image">
-                    <!-- اختيار 1: صورة طويلة من Unsplash لسلطة -->
-                    <img src="./7.png" 
-                         alt="عروض سلطة فاكتوري" 
-                         class="offer-img">
-                    
-                    <!-- اختيار 2: صورة أطول مع تراكيب متنوعة -->
-                    <!--
-                    <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=100" 
-                         alt="عروض سلطة فاكتوري" 
-                         class="offer-img">
-                    -->
-                    
-                    <div class="offer-overlay"></div>
-                </div>
+            <h1 class="main-title">
+                <i class="fas fa-store-alt"></i>
+                فروعنا في المدينة المنورة
+            </h1>
+            
+            <!-- زر اطلب الان الجديد -->
+            <div class="order-now-section">
+                <a href="https://saladfactory.onelink.me/ELfP/drcu2m1f" target="_blank" class="order-now-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    اطلب الان
+                </a>
             </div>
             
-            <!-- أزرار الفروع تحت الصورة مباشرة -->
+            <!-- Branch Buttons Section -->
             <div class="branch-buttons">
                 <!-- تم تغيير الأزرار إلى روابط تفتح خرائط جوجل مباشرة -->
                 <a href="https://maps.app.goo.gl/k2CTw4H8HhAMHUVQ6" target="_blank" class="branch-btn active" onclick="selectBranch(1, event)">
@@ -675,11 +657,105 @@
                     فرع العزيزية
                 </a>
             </div>
+            
+            <!-- Branches Section -->
+            <div class="branches-container">
+                <div class="branches-list">
+                    <!-- Branch 1 Card -->
+                    <div class="branch-card active" data-branch="1">
+                        <div class="branch-header">
+                            <div class="branch-name">فرع علي بن أبي طالب</div>
+                            <div class="branch-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                        </div>
+                        <div class="branch-details">
+                            <div class="branch-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                شارع علي بن أبي طالب، حي الخالدية، المدينة المنورة
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature">توصيل سريع</span>
+                                <span class="feature">أكل صحي</span>
+                                <span class="feature">مكشات لذيذة</span>
+                            </div>
+                            <a href="https://maps.app.goo.gl/k2CTw4H8HhAMHUVQ6" target="_blank" class="map-link">
+                                <i class="fas fa-map"></i>
+                                افتح الخريطة
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 2 Card -->
+                    <div class="branch-card" data-branch="2">
+                        <div class="branch-header">
+                            <div class="branch-name">فرع سلطانة</div>
+                            <div class="branch-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                        </div>
+                        <div class="branch-details">
+                            <div class="branch-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                حي سلطانة، طريق الملك فهد، المدينة المنورة
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature">توصيل مجاني</span>
+                                <span class="feature">عروض مميزة</span>
+                                <span class="feature">سلطات طازجة</span>
+                            </div>
+                            <a href="https://maps.app.goo.gl/4XzPy7Vm9UaiWQ7Y9" target="_blank" class="map-link">
+                                <i class="fas fa-map"></i>
+                                افتح الخريطة
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Branch 3 Card -->
+                    <div class="branch-card" data-branch="3">
+                        <div class="branch-header">
+                            <div class="branch-name">فرع العزيزية</div>
+                            <div class="branch-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                        </div>
+                        <div class="branch-details">
+                            <div class="branch-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                حي العزيزية، شارع أبي بكر الصديق، المدينة المنورة
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature">مكشات شهية</span>
+                                <span class="feature">أسعار مناسبة</span>
+                                <span class="feature">وجبات عائلية</span>
+                            </div>
+                            <a href="https://maps.app.goo.gl/tTq32SP9UNYscw2P6" target="_blank" class="map-link">
+                                <i class="fas fa-map"></i>
+                                افتح الخريطة
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Container -->
+                <div class="map-container">
+                    <div class="map-header">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3 id="map-title">فرع علي بن أبي طالب على الخريطة</h3>
+                    </div>
+                    <iframe 
+                        id="branchMap" 
+                        class="map-frame fade-in" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.716899157747!2d39.572123775759014!3d24.46958787842675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbfc9a3c5c31f%3A0x8d9c3a5b8d7e1b1e!2sAli%20Ibn%20Abi%20Talib%20Rd%2C%20Al%20Madinah%20Al%20Munawwarah%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1684250000000!5m2!1sen!2s"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Main Content -->
-  
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
@@ -687,6 +763,7 @@
                 <i class="fas fa-map-marked-alt"></i>
                 <span>فروع المدينة المنورة</span>
             </div>
+            <p>جميع الحقوق محفوظة © 2023 سلطة فاكتوري</p>
         </div>
     </footer>
 
